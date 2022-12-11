@@ -5,18 +5,36 @@ const path = require("path");
 let window;
 
 const main = async () => {
+  // platform specific
+  const isMac = os.platform() === "darwin";
+
   window = new BrowserWindow({
+    icon: isMac
+      ? path.join(__dirname, "logo.ico")
+      : path.join(__dirname, "logo.icns"),
     width: 800,
     height: 600,
     resizable: true,
     maximizable: false,
     autoHideMenuBar: true,
+    webPreferences: {
+      // devTools:false
+    },
+    show: false, // wait ready-to-show event
+    // frameless
+    // frame: false,
   });
+
+  // show window (avoid flickering)
+  window.on("ready-to-show", window.show);
+
+  // show dev tools
+  window.webContents.openDevTools();
 
   const indexPath = path.join(__dirname, "index.html");
   window.loadFile(indexPath);
 
-  window.on("resize", e => {
+  window.on("resize", _e => {
     console.log(window.getBounds());
   });
 
@@ -31,11 +49,6 @@ const main = async () => {
 
   const countryCode = app.getLocaleCountryCode();
   console.log("Country code", countryCode);
-
-  // platform specific
-  if (os.platform() === "darwin") {
-    console.log(app.isInApplicationsFolder());
-  }
 
   // close app
   // app.quit();
