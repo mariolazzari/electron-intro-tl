@@ -2,6 +2,9 @@ const { app, BrowserWindow } = require("electron");
 const os = require("os");
 const path = require("path");
 
+// reload
+require("electron-reload")(__dirname);
+
 let window;
 
 const main = async () => {
@@ -54,4 +57,7 @@ const main = async () => {
   // app.quit();
 };
 
-app.whenReady().then(main);
+app
+  .whenReady()
+  .then(main)
+  .catch(ex => console.error(ex));
