@@ -1,0 +1,23 @@
+{
+  "name": "electron-intro-tl",
+  "version": "1.0.0",
+  "description": "Electron intro by Tyler Lacerby",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariolazzari/electron-intro-tl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariolazzari/electron-intro-tl/issues"
+  },
+  "homepage": "https://github.com/mariolazzari/electron-intro-tl#readme",
+  "devDependencies": {
+    "electron": "^22.0.0"
+  }
+}
